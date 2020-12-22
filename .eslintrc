@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "strict": "error",
+    "import/order": "error"
+  }
+}
