@@ -4,7 +4,11 @@
 
 Store `.env` files securely in GitHub and share them across different machines and people.
 
-### Features
+<!-- toc -->
+
+<!-- tocstop -->
+
+## Features
 
 - Defaults to storing `.env` files but can handle any kind of file securely
 - Supports simple repositories and monorepo layouts

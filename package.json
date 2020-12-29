@@ -7,7 +7,8 @@
   "scripts": {
     "lint": "eslint .",
     "test": "echo test",
-    "release": "dotenv -e .token release-it --"
+    "release": "dotenv -e .token release-it --",
+    "toc": "markdown-toc README.md -i"
   },
   "engines": {
     "node": ">=10"
@@ -30,6 +31,7 @@
     "concat-stream": "^2.0.0",
     "conf": "^7.1.2",
     "find-up": "^5.0.0",
+    "markdown-toc": "^1.2.0",
     "node-fetch": "^2.6.1",
     "open": "^7.3.0",
     "pkg-dir": "^5.0.0",
