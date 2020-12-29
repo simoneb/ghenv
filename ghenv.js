@@ -7,27 +7,31 @@ const { terminalWidth } = require('yargs')
 const { hideBin } = require('yargs/helpers')
 
 const log = require('./lib/log')
-const { setup, setupLogging } = require('./lib/middleware')
+const {
+  setup,
+  setupLogging,
+  setupConfig,
+} = require('./lib/middleware')
 const { view, read, write, list, explain } = require('./lib/commands')
 const { NAME, pkg } = require('./lib/const')
 const { tryLoadConfig } = require('./lib/util')
 
 yargs(hideBin(process.argv))
-  .middleware([setupLogging, setup])
+  .middleware([setupLogging, setupConfig, setup])
   .config(tryLoadConfig())
   .option('repository', {
-    group: 'Options:',
+    group: 'Global Options:',
     description:
       'The name of the repository where to store the processed files. It can be a simple name, in which case the authenticated user account is assumed to be the owner, or in the form {owner}/{name}',
     default: `.${NAME}`,
   })
   .option('pattern', {
-    group: 'Options:',
+    group: 'Global Options:',
     description: 'The pattern to use to match files to include',
     default: '**/.env',
   })
   .option('file-name', {
-    group: 'Options:',
+    group: 'Global Options:',
     description:
       'The name of the file to store in the repository. Defaults to the name of the package as specified in package.json',
     default: pkg.name,
@@ -71,13 +75,13 @@ yargs(hideBin(process.argv))
   )
   .command(
     'read',
-    'Reads the remote archive and writes to the local file system',
+    'Reads the remote archive and writes to the local file system, creating new files or overwriting existing ones',
     () => {},
     read
   )
   .command(
     ['list', 'ls'],
-    'Lists the files that will be processed',
+    'Lists the files that will be processed. Defaults to showing the local files',
     yargs =>
       yargs.option('remote', {
         group: 'Command Options:',
@@ -91,8 +95,16 @@ yargs(hideBin(process.argv))
   )
   .command(
     'view',
-    'View the contents of the remote archive',
-    () => {},
+    'View the contents of the files. Defaults to showing the local files',
+    yargs =>
+      yargs.option('remote', {
+        group: 'Command Options:',
+        alias: 'r',
+        boolean: true,
+        default: false,
+        description:
+          'When provided, shows the contents of the remote files instead of the local ones',
+      }),
     view
   )
   .command(
@@ -101,7 +113,20 @@ yargs(hideBin(process.argv))
     () => {},
     explain
   )
-  .command('debug', false, () => {}, console.log)
+  .command(
+    'debug',
+    false,
+    yargs =>
+      yargs.option('remote', {
+        group: 'Command Options:',
+        alias: 'r',
+        boolean: true,
+        default: false,
+        description:
+          'When provided, performs remote inizialization before outputting debug information',
+      }),
+    console.log
+  )
   .demandCommand()
   .strict()
   .fail(function (msg, err, yargs) {
