@@ -6,6 +6,18 @@ Store `.env` files securely in GitHub and share them across different machines a
 
 <!-- toc -->
 
+- [Features](#features)
+- [Setup](#setup)
+- [Quick start](#quick-start)
+- [Motivation](#motivation)
+- [Configuration](#configuration)
+  * [`repository`](#repository)
+  * [`pattern`](#pattern)
+  * [`fileName`](#filename)
+- [How it works](#how-it-works)
+- [License](#license)
+- [Credits](#credits)
+
 <!-- tocstop -->
 
 ## Features
