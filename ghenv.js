@@ -2,18 +2,18 @@
 
 'use strict'
 
-const yargs = require('yargs/yargs')
 const { terminalWidth } = require('yargs')
 const { hideBin } = require('yargs/helpers')
+const yargs = require('yargs/yargs')
 
+const { view, read, write, list, explain } = require('./lib/commands')
+const { NAME, pkg } = require('./lib/const')
 const log = require('./lib/log')
 const {
   setup,
   setupLogging,
   setupConfig,
 } = require('./lib/middleware')
-const { view, read, write, list, explain } = require('./lib/commands')
-const { NAME, pkg } = require('./lib/const')
 const { tryLoadConfig } = require('./lib/util')
 
 yargs(hideBin(process.argv))

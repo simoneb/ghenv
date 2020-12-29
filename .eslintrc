@@ -14,6 +14,12 @@
   },
   "rules": {
     "strict": "error",
-    "import/order": "error"
+    "import/order": [
+      "error",
+      {
+        "alphabetize": { "order": "asc" },
+        "newlines-between": "always"
+      }
+    ]
   }
 }
