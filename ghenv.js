@@ -7,7 +7,7 @@ const { hideBin } = require('yargs/helpers')
 const yargs = require('yargs/yargs')
 
 const { view, read, write, list, explain } = require('./lib/commands')
-const { NAME, pkg } = require('./lib/const')
+const { NAME, hostPkg } = require('./lib/const')
 const log = require('./lib/log')
 const {
   setup,
@@ -34,7 +34,7 @@ yargs(hideBin(process.argv))
     group: 'Global Options:',
     description:
       'The name of the file to store in the repository. Defaults to the name of the package as specified in package.json',
-    default: pkg.name,
+    default: hostPkg.name,
   })
   .option('verbose', {
     alias: 'v',
