@@ -1,6 +1,6 @@
 {
   "name": "ghenv",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Store .env files securely in GitHub and share them across different machines and people.",
   "bin": "ghenv.js",
   "main": "ghenv.js",
