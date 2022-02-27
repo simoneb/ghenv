@@ -1,3 +1,5 @@
+> The license of this software has changed to AWISC - Anti War ISC License
+
 ![ci](https://github.com/simoneb/ghenv/workflows/ci/badge.svg)
 
 # ghenv
